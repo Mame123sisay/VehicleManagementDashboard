@@ -51,12 +51,14 @@ const Dashboard = () => {
       <div className="mb-4">
         <input
           type="text"
+          required
           placeholder="Vehicle Name"
           value={newVehicle.name}
           onChange={e => setNewVehicle({ ...newVehicle, name: e.target.value })}
           className="border p-2 mr-2"
         />
         <input
+        required
           type="text"
           placeholder="Status"
           value={newVehicle.status}
