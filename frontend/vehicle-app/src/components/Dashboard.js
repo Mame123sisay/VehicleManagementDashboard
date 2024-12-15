@@ -4,6 +4,7 @@ import axios from 'axios';
 import UpdateModal from './UpdateModal';
 
 const Dashboard = () => {
+  const URI_API=process.env.REACT_APP_API_URL;
   const [vehicles, setVehicles] = useState([]);
   const [newVehicle, setNewVehicle] = useState({ name: '', status: '' });
   const [selectedVehicle, setSelectedVehicle] = useState(null);
@@ -14,23 +15,23 @@ const Dashboard = () => {
   }, []);
 
   const fetchVehicles = async () => {
-    const response = await axios.get('http://localhost:5000/vehicles');
+    const response = await axios.get(`${URI_API}/vehicles`);
     setVehicles(response.data);
   };
 
   const addVehicle = async () => {
-    const response = await axios.post('http://localhost:5000/vehicles', newVehicle);
+    const response = await axios.post(`${URI_API}/vehicles`, newVehicle);
     setVehicles([...vehicles, response.data]);
     setNewVehicle({ name: '', status: '' });
   };
 
   const updateVehicle = async (id, updatedData) => {
-    const response = await axios.put(`http://localhost:5000/vehicles/${id}`, updatedData);
+    const response = await axios.put(`${URI_API}/vehicles/${id}`, updatedData);
     setVehicles(vehicles.map(vehicle => (vehicle._id === id ? response.data : vehicle)));
   };
 
   const deleteVehicle = async (id) => {
-    await axios.delete(`http://localhost:5000/vehicles/${id}`);
+    await axios.delete(`${URI_API}/${id}`);
     setVehicles(vehicles.filter(vehicle => vehicle._id !== id));
   };
 
