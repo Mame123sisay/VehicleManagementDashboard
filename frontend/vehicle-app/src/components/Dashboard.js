@@ -31,7 +31,7 @@ const Dashboard = () => {
   };
 
   const deleteVehicle = async (id) => {
-    await axios.delete(`${URI_API}/${id}`);
+    await axios.delete(`${URI_API}/vehicles/${id}`);
     setVehicles(vehicles.filter(vehicle => vehicle._id !== id));
   };
 
