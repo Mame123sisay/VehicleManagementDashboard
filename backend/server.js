@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://vehiclemanagementdashboard.onrender.com/', // Allows all origins
+  origin: 'https://vehiclemanagementdashboard.onrender.com', // Allows all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed methods
   
 }));
